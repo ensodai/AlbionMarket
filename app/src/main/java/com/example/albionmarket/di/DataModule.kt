@@ -2,11 +2,11 @@ package com.example.albionmarket.di
 
 import android.content.Context
 import com.example.albionmarket.data.network.itemRetrofitService.ItemRetrofitService
-import com.example.albionmarket.data.repository.Repository
-import com.example.albionmarket.data.database.ItemsDataBase
-import com.example.albionmarket.data.database.Dao
+import com.example.albionmarket.data.repository.RepositoryImpl
+import com.example.albionmarket.data.db.ItemsDataBase
+import com.example.albionmarket.data.db.Dao
 import com.example.albionmarket.data.network.priceRetrofitServise.PriceRetrofitService
-import com.example.albionmarket.data.repository.Transformations
+import com.example.albionmarket.data.repository.Mapper
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -35,8 +35,8 @@ object DataModule {
     }
 
     @Provides
-    fun provideTransformations(): Transformations{
-        return Transformations()
+    fun provideTransformations(): Mapper{
+        return Mapper()
     }
 
     @Provides
@@ -45,13 +45,13 @@ object DataModule {
         dao: Dao,
         retrofitServiceItems: ItemRetrofitService,
         retrofitServicePrice: PriceRetrofitService,
-        transformations: Transformations
-        ): Repository {
-        return Repository(
+        mapper: Mapper
+        ): RepositoryImpl {
+        return RepositoryImpl(
             dao,
             retrofitServiceItems,
             retrofitServicePrice,
-            transformations
+            mapper
         )
     }
 

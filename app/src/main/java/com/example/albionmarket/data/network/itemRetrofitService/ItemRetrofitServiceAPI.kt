@@ -1,6 +1,6 @@
 package com.example.albionmarket.data.network.itemRetrofitService
 
-import com.example.albionmarket.data.network.itemRetrofitService.models.test.AlbionItemsModel
+import com.example.albionmarket.data.network.itemRetrofitService.models.AlbionItemsModel
 import retrofit2.http.GET
 
 interface ItemRetrofitServiceAPI {
